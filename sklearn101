@@ -1,0 +1,83 @@
+##sklearn package
+import sklearn 
+#字典特征抽取、文本特征抽取、TF-IDF
+
+
+
+#字典特征抽取：对字典数据特征化-sklearn.feature_extraction.DicVectorizer 文本数字化
+#DictVectrizer(sparse=True,...)
+
+##DictVectorizer.fit_transform(x)
+###x:字典或者包括字典的迭代器
+###返回值：返回sparse矩阵
+
+##DictVectorizer.inverse_transform(x)
+###x:array数组或者sparse矩阵
+###返回值：转换之间数据格式
+
+##DictVectorizer.get_feature_names(x)
+###返回类别名称
+
+##DictVectorizer.transform(x)
+###按照原先标准转化
+
+#压缩格式：(sparse=True)
+##(0,1) 1.0
+##(0,3) 100.0
+##sparse矩阵->节约空间，方便读取处理
+#(sparse=False)
+#ndarray 数组维度=2
+##[0 1 0 100
+## 0 0 0 0]
+
+
+
+
+#文本特征抽取：作用在于对文本数据进行特征值化 #one-hot编码分析 -sklearn.feature_extraction.text.CountVectorizer
+#CountVectorizer()
+#返回词频矩阵
+
+##countVectorizer.fit_transform(x)
+###x:文本或者包含文本字符串的可迭代对象
+###返回值：返回sparse矩阵
+
+##countVectorizer.inverse_transform(x)
+###x:array数组 or sparse数组
+###返回值：转换之前的数据格式
+
+##countVectorizer.get_feature_names()
+###返回值：单词列表
+
+#统计所有文章当中所有的词，重复的看做一次；每篇文章在词的列表里进行统计每个词出现的次数
+#只可拆分英文，不可拆分中文
+#jieba-分词，拆分中文汉字
+#中文特征值化：1. 准备句子，用jieba.cut进行分词;2. 实例化countVectorizer；3. 将分词结果变成字符串当作fit_transform的输入值
+
+#朴素贝叶斯
+#tf-term frequency
+#idf-inverse document frequency- log(总文档数量/该词出现的文档数量)
+
+
+
+
+#TF-IDF：某词或短语在一篇文章中出现的概率高，并且在其他文章中出现很少，则认为此词或短语具有很好的类别区别功能，适合用来分类 - slearn.feature_extraction.text.TfidfVectorizer
+#TF-IDF作用：用以评估字词对于一个文件集或一个语料库中的其中一份文件的重要程度
+
+##TfidfVectorizer(stop_word=None,...)
+###返回词的权重矩阵
+
+##TfidifVectorizer.fit_transform(x)
+###x:文本 or 包含文本字符串的可迭代性
+###返回值：返回sparse矩阵
+
+##TfidifVectorizer.inverse_transform(x)
+###x:array数组或者sparse矩阵
+###返回值：转换之前的数据格式
+
+##TfidfVectorizer.get_feature_names()
+###返回值：单词列表
+
+
+
+
+
